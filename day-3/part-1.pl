@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+use strict;
 use Mojo::File qw/path/;
 use List::Util qw/pairs/;
 
