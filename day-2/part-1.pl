@@ -47,6 +47,10 @@ sub is_safe_difference {
 
 foreach my $report_line (@content) {
     my @levels = split(/\s+/, $report_line);
+    # just to note, perl is relatively clever in the sense that when using || or &&, shortcut behaviour
+    # is enabled which means if the left part of the evaluation fails, the right side isn't evaluated at 
+    # all, which means that is_safe_difference is only called *if* is_increasing || is_decreasing 
+    # evaluates to true 
     $safe_count += ((is_increasing(@levels) || is_decreasing(@levels)) && is_safe_difference(@levels))
         ? 1
         : 0;
